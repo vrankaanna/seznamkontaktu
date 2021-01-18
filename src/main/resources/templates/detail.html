@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="../static/css/styly.css"
+          th:href="@{'/css/styly.css'}"/>
+    <link rel="icon" href="../static/images/favicon.png"
+          th:href="@{'/images/favicon.png'}"/>
+    <title>Výchozí webová stránka | Java 2</title>
+</head>
+<body>
+    <div class="page">
+
+        <h1>Detail kontaktu</h1>
+
+        <form method="post">
+            <table>
+                <tr>
+                <td>Jmeno:</td>
+                <td>
+                    <input type="text" name="jmeno" value="Cele jmeno"
+                    th:value="${kontakt.jmeno}"/>
+                </td>
+                </tr>
+                <tr>
+                    <td>Telefonni cislo:</td>
+                    <td>
+                        <input type="text" name="telefonniCislo" value="+421903555777"
+                               th:value="${kontakt.telefonniCislo}"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td>
+                        <input type="text" name="email" value="cele@jmeno.sk"
+                               th:value="${kontakt.email}"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="submit" value="Ulozit" class="button" />
+                        <a th:href="@{'/kontakty'}" href="index.html" class="button">Zpet</a>
+                    </td>
+                </tr>
+            </table>
+        </form>
+
+    </div>
+</body>
+</html>

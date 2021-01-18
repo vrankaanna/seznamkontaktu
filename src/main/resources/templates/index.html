@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="../static/css/styly.css"
+          th:href="@{'/css/styly.css'}"/>
+    <link rel="icon" href="../static/images/favicon.png"
+          th:href="@{'/images/favicon.png'}"/>
+    <title>Výchozí webová stránka | Java 2</title>
+</head>
+<body>
+    <div class="page">
+
+        <h1>Seznam kontaktu</h1>
+
+        <table>
+            <tr>
+                <th>Cislo</th>
+                <th>Jmeno</th>
+                <th>Telefonni cislo</th>
+                <th>Email</th>
+            </tr>
+            <tr th:each="kontakt: ${kontakty}">
+                <td th:text="${kontakt.id}">1</td>
+                <td th:text="${kontakt.jmeno}">Vivien</td>
+                <td th:text="${kontakt.telefonniCislo}">+420123456789</td>
+                <td th:text="${kontakt.email}">vivien@gmail.com</td>
+                <td>
+                    <a th:href="@{'/detail/' + ${kontakt.id}}"
+                       href="detail.html" class="button">detail</a>
+                    <form th:action="@{'/kontakty/' + ${kontakt.id}}" method="post">
+                        <input type="hidden" name="_method" value="DELETE" />
+                        <input type="submit" value="Smazat" class="button" />
+                    </form>
+                </td>
+            </tr>
+            <tr th:remove="all">
+                <td>1</td>
+                <td>Vivien</td>
+                <td>+420123456789</td>
+                <td>vivien@gmail.com</td>
+                <td>
+                    <a href="detail.html" class="button">detail</a>
+                    <form method="post">
+                        <input type="hidden" name="_method" value="DELETE" />
+                        <input type="submit" value="Smazat" class="button" />
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    <a th:href="@{'/novy'}" href="detail.html" class="button">
+                        Pridat novy kontakt</a>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+</body>
+</html>
